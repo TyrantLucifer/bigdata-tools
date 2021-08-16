@@ -76,11 +76,27 @@ object RandomNumUtil {
       set.toList
     }
 
+  /**
+    * 按照指定长度生成随机字符串
+    * @param length 生成随机字符串长度
+    * @return
+    */
   def randomString(length: Int): String = {
     val list: List[Char] = (1 to length).map { _ =>
       val i: Int = randomInt(1, 26)
       map.getOrElse(i, 'x')
     }.toList
     list.mkString("")
+  }
+
+  /**
+    * 根据给定的元素列表，从列表随机挑选出元素
+    * @param itemList 元素列表
+    * @tparam T
+    * @return
+    */
+  def randomItemFromList[T](itemList: List[T]): T = {
+    val i: Int = randomInt(0, itemList.length - 1)
+    itemList(i)
   }
 }
